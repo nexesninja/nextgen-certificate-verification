@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verify Certificate — NEXTGEN Research 2026</title>
+<style>
+  :root{ --ink:#111; --line:#ddd; --accent:#2E7D4F; --fail:#B3392B; --muted:#777; }
+  *{box-sizing:border-box;}
+  body{
+    font-family:-apple-system, system-ui, sans-serif;
+    background:#fafafa;
+    color:var(--ink);
+    display:flex; justify-content:center;
+    padding:60px 20px;
+  }
+  main{width:100%; max-width:380px;}
+  h1{font-size:19px; font-weight:600; margin:0 0 4px;}
+  p.sub{color:var(--muted); font-size:14px; margin:0 0 28px;}
+  input{
+    width:100%; padding:11px 12px; margin-bottom:10px;
+    border:1px solid var(--line); border-radius:6px;
+    font-size:14px; font-family:inherit;
+  }
+  input:focus{outline:2px solid var(--accent); border-color:var(--accent);}
+  button{
+    width:100%; padding:11px; border:none; border-radius:6px;
+    background:var(--ink); color:#fff; font-size:14px; font-weight:600;
+    cursor:pointer;
+  }
+  #result{margin-top:22px; font-size:14px; line-height:1.5;}
+  .ok{color:var(--accent); font-weight:600;}
+  .fail{color:var(--fail); font-weight:600;}
+</style>
+</head>
+<body>
+<main>
+  <h1>Verify a certificate</h1>
+  <p class="sub">NEXTGEN Research 2026 — Green Club, FCT</p>
+
+  <form id="form">
+    <input id="name" placeholder="Name on certificate">
+    <input id="date" placeholder="Date (e.g. 2026-07-05)">
+    <input id="id" placeholder="Certificate ID">
+    <button type="submit">Verify</button>
+  </form>
+
+  <div id="result"></div>
+</main>
+
+<script>
+  const WORKER_URL = "https://your-worker.workers.dev"; // <-- replace with your real Worker URL
+
+  const form = document.getElementById('form');
+  const result = document.getElementById('result');
+
+  async function verify(name, date, id) {
+    result.textContent = "Checking...";
+    const url = `${WORKER_URL}/?id=${encodeURIComponent(id)}&name=${encodeURIComponent(name)}&date=${encodeURIComponent(date)}`;
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+      result.innerHTML = data.valid
+        ? `<span class="ok">✓ Verified</span> — issued by Green Club FCT.`
+        : `<span class="fail">✕ Not found</span> — check the details and try again.`;
+    } catch {
+      result.textContent = "Couldn't reach the verification server. Try again shortly.";
+    }
+  }
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    verify(
+      document.getElementById('name').value.trim(),
+      document.getElementById('date').value.trim(),
+      document.getElementById('id').value.trim()
+    );
+  });
+
+  // Auto-fill and auto-verify if opened from a scanned QR code
+  const p = new URLSearchParams(location.search);
+  if (p.get('id')) {
+    document.getElementById('name').value = p.get('name') || '';
+    document.getElementById('date').value = p.get('date') || '';
+    document.getElementById('id').value = p.get('id') || '';
+    verify(p.get('name') || '', p.get('date') || '', p.get('id') || '');
+  }
+</script>
+</body>
+</html>
