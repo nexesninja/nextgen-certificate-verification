@@ -21,78 +21,51 @@
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;display:flex;flex-direction:column;}
-
-  /* Top bar */
   .topbar{background:var(--forest);height:5px;flex:none;}
-
   main{flex:1;display:flex;flex-direction:column;align-items:center;padding:40px 20px 60px;}
-
-  /* Header */
   header{text-align:center;margin-bottom:32px;}
   header img{width:84px;height:84px;object-fit:contain;margin-bottom:12px;}
   header .org{font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--forest);}
   header .uni{font-size:12px;color:var(--muted);margin-top:2px;}
-
-  /* Card */
   .card{background:var(--white);border:1px solid var(--line);border-radius:8px;width:100%;max-width:460px;padding:36px 32px 32px;box-shadow:0 4px 24px rgba(30,92,42,0.07);}
-
   .card-title{font-family:'Playfair Display',Georgia,serif;font-size:22px;font-weight:600;color:var(--forest);margin-bottom:4px;}
   .card-sub{font-size:13px;color:var(--muted);margin-bottom:28px;line-height:1.55;}
-
   label{display:block;font-size:11.5px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
   input{display:block;width:100%;padding:11px 13px;border:1.5px solid var(--line);border-radius:5px;font-family:'Inter',sans-serif;font-size:14px;color:var(--ink);background:var(--white);margin-bottom:16px;transition:border-color 0.15s;}
   input:focus{outline:none;border-color:var(--leaf);}
   input#cert-id{font-family:'Courier New',monospace;font-size:15px;letter-spacing:0.12em;text-transform:uppercase;}
-
   button.verify-btn{width:100%;padding:13px;background:var(--forest);color:var(--white);font-family:'Inter',sans-serif;font-size:14px;font-weight:600;border:none;border-radius:5px;cursor:pointer;transition:background 0.15s;margin-top:4px;}
   button.verify-btn:hover{background:#174d22;}
   button.verify-btn:focus-visible{outline:2px solid var(--leaf);outline-offset:2px;}
-
   .divider{border:none;border-top:1px solid var(--line);margin:28px 0;}
-
   #result{min-height:1px;}
-
-  /* Animations */
   .result-ok,.result-fail{animation:rise 0.3s ease;}
   @keyframes rise{from{opacity:0;transform:translateY(5px);}to{opacity:1;transform:translateY(0);}}
   @media(prefers-reduced-motion:reduce){.result-ok,.result-fail{animation:none;}}
-
-  /* Verified state */
   .badge-row{display:flex;align-items:center;gap:12px;margin-bottom:6px;}
   .seal{width:44px;height:44px;background:var(--leaf);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;color:white;flex:none;}
   .verified-label{font-size:11.5px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--leaf);}
   .recipient-name{font-family:'Playfair Display',serif;font-size:24px;font-weight:600;color:var(--forest);line-height:1.2;margin-top:2px;}
-
   .verified-msg{font-size:13px;color:var(--muted);line-height:1.6;margin:14px 0 0;padding-top:14px;border-top:1px solid var(--line);}
-
   .meta{margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:12px;}
   .meta-item dt{font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);margin-bottom:2px;}
   .meta-item dd{font-size:13px;font-weight:500;color:var(--ink);}
-
   .linkedin-btn{display:inline-flex;align-items:center;gap:8px;margin-top:20px;padding:10px 18px;background:#0A66C2;color:white;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;border:none;border-radius:4px;cursor:pointer;text-decoration:none;transition:background 0.15s;}
   .linkedin-btn:hover{background:#004182;}
   .linkedin-btn svg{flex:none;}
-
-  /* Fail state */
   .result-fail{background:var(--fail-bg);border:1px solid var(--fail-line);border-radius:6px;padding:20px 22px;}
   .fail-icon{font-size:20px;margin-bottom:8px;}
   .fail-title{font-weight:600;font-size:14px;color:var(--fail);margin-bottom:6px;}
   .fail-body{font-size:13px;color:var(--muted);line-height:1.6;}
-
-  /* Checking */
   .checking{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:8px;}
   .spinner{width:14px;height:14px;border:2px solid var(--line);border-top-color:var(--leaf);border-radius:50%;animation:spin 0.7s linear infinite;flex:none;}
   @keyframes spin{to{transform:rotate(360deg);}}
-
-  /* About section */
   .about{width:100%;max-width:460px;margin-top:28px;}
   .about-title{font-size:11.5px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
   .about-card{background:var(--white);border:1px solid var(--line);border-radius:8px;padding:24px 28px;box-shadow:0 2px 12px rgba(30,92,42,0.05);}
   .about-event-name{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;color:var(--forest);margin-bottom:8px;}
   .about-desc{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:20px;}
-
   .about-divider{border:none;border-top:1px solid var(--line);margin:18px 0;}
-
   .speakers-label{font-size:11px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;}
   .speaker{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px;}
   .speaker:last-child{margin-bottom:0;}
@@ -100,8 +73,6 @@
   .speaker-name{font-size:13px;font-weight:600;color:var(--ink);}
   .speaker-role{font-size:12px;color:var(--muted);margin-top:1px;line-height:1.45;}
   .speaker-tag{display:inline-block;font-size:10.5px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;background:#EAF5EA;color:var(--forest);padding:2px 7px;border-radius:3px;margin-bottom:3px;}
-
-  /* Footer */
   footer{text-align:center;font-size:12px;color:var(--muted);padding:24px 20px;border-top:1px solid var(--line);margin-top:auto;}
 </style>
 </head>
@@ -122,6 +93,9 @@
 
     <label for="cert-name">Full name on certificate</label>
     <input type="text" id="cert-name" placeholder="e.g. Amara Wickramasinghe" autocomplete="off">
+
+    <label for="cert-date">Date issued</label>
+    <input type="text" id="cert-date" placeholder="e.g. 2026-07-05" autocomplete="off">
 
     <label for="cert-id">Certificate ID</label>
     <input type="text" id="cert-id" placeholder="e.g. 04C43F52" autocomplete="off" maxlength="8">
@@ -173,7 +147,7 @@
 </main>
 
 <footer>
-  Certificates issued by Green Club, Faculty of Computing &amp; Technology, University of Kelaniya &nbsp;-&nbsp; NEXTGEN Research 2026
+  Certificates issued by Green Club, Faculty of Computing &amp; Technology, University of Kelaniya &nbsp;·&nbsp; NEXTGEN Research 2026
 </footer>
 
 <script>
@@ -183,14 +157,14 @@
     return String(str).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   }
 
-  function buildLinkedInURL(name, certId){
-    const verifyURL = `${location.origin}${location.pathname}?id=${encodeURIComponent(certId)}&name=${encodeURIComponent(name)}`;
+  function buildLinkedInURL(name, certId, date){
+    const verifyURL = `${location.origin}${location.pathname}?id=${encodeURIComponent(certId)}&name=${encodeURIComponent(name)}&date=${encodeURIComponent(date)}`;
     const params = new URLSearchParams({
       startTask:"CERTIFICATION_NAME",
       name:"NEXTGEN Research 2026",
       organizationName:"Green Club, Faculty of Computing & Technology, University of Kelaniya",
-      issueYear:"2026",issueMonth:"7",
-      certUrl:verifyURL,certId:certId
+      issueYear:"2026", issueMonth:"7",
+      certUrl:verifyURL, certId:certId
     });
     return `https://www.linkedin.com/profile/add?${params}`;
   }
@@ -201,8 +175,8 @@
       <div class="checking"><div class="spinner"></div>Verifying certificate details…</div>`;
   }
 
-  function showVerified(name, certId){
-    const liURL = buildLinkedInURL(name, certId);
+  function showVerified(name, certId, date){
+    const liURL = buildLinkedInURL(name, certId, date);
     document.getElementById('result').innerHTML=`
       <hr class="divider">
       <div class="result-ok">
@@ -218,7 +192,7 @@
         </p>
         <dl class="meta">
           <div class="meta-item"><dt>Event</dt><dd>NEXTGEN Research 2026</dd></div>
-          <div class="meta-item"><dt>Date</dt><dd>5 July 2026</dd></div>
+          <div class="meta-item"><dt>Date Issued</dt><dd>${escapeHtml(date)}</dd></div>
           <div class="meta-item"><dt>Issued by</dt><dd>Green Club FCT · UoK</dd></div>
           <div class="meta-item"><dt>Certificate ID</dt><dd>${escapeHtml(certId)}</dd></div>
         </dl>
@@ -236,7 +210,7 @@
         <div class="fail-icon">✕</div>
         <div class="fail-title">Certificate Not Found</div>
         <div class="fail-body">
-          The details provided do not match any certificate issued for NEXTGEN Research 2026. Please ensure the full name and Certificate ID are entered exactly as they appear on the certificate, including correct spacing and capitalisation, then try again.<br><br>
+          The details provided do not match any certificate issued for NEXTGEN Research 2026. Please ensure the full name, date issued, and Certificate ID are entered exactly as they appear on the certificate, including correct spacing and capitalisation, then try again.<br><br>
           If you believe this is an error, please contact the Green Club of FCT directly.
         </div>
       </div>`;
@@ -251,31 +225,33 @@
       </div>`;
   }
 
-  async function verify(name, certId){
+  async function verify(name, date, certId){
     showChecking();
-    const url=`${WORKER_URL}/?id=${encodeURIComponent(certId)}&name=${encodeURIComponent(name)}`;
+    const url=`${WORKER_URL}/?id=${encodeURIComponent(certId)}&name=${encodeURIComponent(name)}&date=${encodeURIComponent(date)}`;
     try{
       const res=await fetch(url);
       const data=await res.json();
-      if(data.valid) showVerified(name,certId);
+      if(data.valid) showVerified(name, certId, date);
       else showFail();
     }catch{showError();}
   }
 
   function handleVerify(){
-    const name=document.getElementById('cert-name').value.trim();
-    const certId=document.getElementById('cert-id').value.trim().toUpperCase();
-    if(!name||!certId) return;
-    verify(name,certId);
+    const name   = document.getElementById('cert-name').value.trim();
+    const date   = document.getElementById('cert-date').value.trim();
+    const certId = document.getElementById('cert-id').value.trim().toUpperCase();
+    if(!name || !date || !certId) return;
+    verify(name, date, certId);
   }
 
   document.addEventListener('keydown',e=>{if(e.key==='Enter') handleVerify();});
 
   const p=new URLSearchParams(location.search);
-  if(p.get('id')&&p.get('name')){
-    document.getElementById('cert-name').value=p.get('name');
-    document.getElementById('cert-id').value=p.get('id');
-    verify(p.get('name'),p.get('id'));
+  if(p.get('id') && p.get('name') && p.get('date')){
+    document.getElementById('cert-name').value = p.get('name');
+    document.getElementById('cert-date').value = p.get('date');
+    document.getElementById('cert-id').value   = p.get('id');
+    verify(p.get('name'), p.get('date'), p.get('id'));
   }
 </script>
 </body>
